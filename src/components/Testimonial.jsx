@@ -6,6 +6,8 @@ const Testimonial = () => {
         <h2>Testimonial</h2>
         <section>
             <TestimonialCard name={"Amit Gupta"} feedback={"Your teaching skills are so good."}></TestimonialCard>
+            <TestimonialCard name={"Amit Gupta"} feedback={"Your teaching skills are so good."}></TestimonialCard>
+            <TestimonialCard name={"Amit Gupta"} feedback={"Your teaching skills are so good."}></TestimonialCard>
         </section>
     </div>
   )

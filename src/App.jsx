@@ -4,7 +4,9 @@ import Work from "./components/Work";
 import Experience from "./components/Experience";
 import Service from "./components/Service";
 import Testimonial from "./components/Testimonial";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 
 function App() {
 
@@ -16,7 +18,9 @@ function App() {
       <Experience />
       <Service />
       <Testimonial />
+      <Contact />
       <Footer />
+      <Toaster />
     </>
   )
 }
