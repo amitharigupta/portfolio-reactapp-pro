@@ -1,16 +1,36 @@
-import { motion } from "framer-motion";
+import { animate, motion, MotionConfig } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import { BsArrowUpRight, BsChevronDown } from "react-icons/bs"
 import AmitLogo from "../assets/amit-logo.jpeg";
-
+import { useRef } from "react";
 
 const Home = () => {
+    const clientCount = useRef(null);
+    const projectCount = useRef(null);
+
+    const animationClientCounts = () => {
+        animate(0, 3, {
+            duration: 1,
+            onUpdate: (v) => {
+                clientCount.current.textContent = v.toFixed()
+            }
+        })
+    }
+
+    const animationProjectCounts = () => {
+        animate(0, 10, {
+            duration: 1,
+            onUpdate: (v) => {
+                projectCount.current.textContent = v.toFixed()
+            }
+        })
+    }
 
     const animations = {
         h1: {
             initial: {
-                x: "-100%",
-                opacity: 0
+                // x: "-100%",
+                // opacity: 0
             },
             whileInview: {
                 x: 0,
@@ -23,7 +43,7 @@ const Home = () => {
     <div id="home">
         <section>
             <div>
-                <motion.h1 initial={{ x: "-100%", opacity: 0 }}>
+                <motion.h1 {...animations.h1}>
                     Hi, I am <br/> Amit Gupta
                 </motion.h1>
 
@@ -31,6 +51,7 @@ const Home = () => {
                     strings: ["A Developer", "A Designer", "A Programmer"], 
                     autoStart: true, 
                     loop:true,
+                    cursor: "",
                     wrapperClassName: "typewriterpara",
                     }} 
                 />
@@ -44,7 +65,7 @@ const Home = () => {
 
                 <article>
                     <p>
-                        +<span>100</span>
+                        +<motion.span whileInView={animationClientCounts} ref={clientCount}>{}</motion.span>
                     </p>
                     <span>Clients WorldWide</span>
                 </article>
@@ -52,9 +73,9 @@ const Home = () => {
                 <aside>
                     <article>
                         <p>
-                            +<span>50</span>
+                            +<motion.span whileInView={animationProjectCounts} ref={projectCount}>{}</motion.span>
                         </p>
-                        <span>Projects Made</span>
+                        <span>Projects Done</span>
                     </article>
                     <article data-special>
                         <p>
